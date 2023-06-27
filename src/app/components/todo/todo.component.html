@@ -1,0 +1,30 @@
+<app-heading heading="All your todos"></app-heading>
+
+<div class="actions">
+  <button mat-raised-button aria-label="Add new todo" color="accent" (click)="openAddNewTodo()">Add new Todo</button>
+</div>
+
+<div class="page-container">
+  <mat-tab-group class="row">
+    <mat-tab label="Active todos">
+      <app-loading *ngIf="showLoading"  width="100%" height="5rem" count="5" class="item"></app-loading>
+
+      <h2 class="no-item" *ngIf="todoList.length===0 && !showLoading">
+        <app-empty icon="fas fa-clipboard" iconNext="far fa-clipboard" message1="There are no active todos." message2="Start by adding new todo."></app-empty>
+        <button mat-raised-button aria-label="Add new todo" color="success" (click)="openAddNewTodo()">Add new todo</button>
+      </h2>
+      <div class="full-width" *ngFor="let todo of todoList">
+        <app-todo-card [todo]="todo" (checkEmitter)="markAsActive(todo)" (uncheckEmitter)="markAsInActive(todo)"></app-todo-card>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Inactive todos">
+      <h2 class="no-item" *ngIf="todoListInactive.length===0 && !showLoading">
+        <app-empty icon="fas fa-clipboard" iconNext="far fa-clipboard" message1="There are no inactive todos." message2="You can mark them inactive."></app-empty>
+      </h2>
+      <div class="full-width" *ngFor="let todo of todoListInactive">
+        <app-todo-card [todo]="todo" (checkEmitter)="markAsActive(todo)" (uncheckEmitter)="markAsInActive(todo)" (deleteEmitter)="deleteTodo($event)"></app-todo-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

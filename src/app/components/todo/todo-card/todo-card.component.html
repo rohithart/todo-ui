@@ -1,0 +1,11 @@
+<div class="todo-container">
+  <mat-checkbox ngModel="todo.active" (change)="checkedTodo(todo._id, todo.is_active)"></mat-checkbox>
+  <div class="todo-details">
+    <span>{{todo.description}}</span>
+
+    <span class="todo-timestamps">
+      <span><i class="far fa-clock" aria-label="Last updated at" matTooltip="Last updated at" matTooltipPosition="above"></i> {{todo.updatedAt}}</span>
+      <i class="far fa-trash-alt delete-todo" *ngIf="!todo.is_active" (click)="deleteTodo(todo._id)"></i>
+    </span>
+  </div>
+</div>
