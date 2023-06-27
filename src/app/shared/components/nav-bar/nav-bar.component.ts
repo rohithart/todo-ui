@@ -9,14 +9,8 @@ import { APP_CONFIG, AppConfig } from 'src/app/configs/app.config';
 export class NavBarComponent implements OnInit {
   appConfig: any;
   menuItems: any[] = [];
-  menuItemItems: any[] = [];
-  menuStarItems: any[] = [];
-  menuHouseItems: any[] = [];
   menuItemsDefault: any[] = [];
-  menuItemsUser: any[] = [];
-  menuExtraItems: any[] = [];
 
-  searchInput = '';
   addOnBlur = true;
 
   constructor(@Inject(APP_CONFIG) appConfig: any) {

@@ -1,5 +1,5 @@
 <div class="todo-container">
-  <mat-checkbox ngModel="todo.active" (change)="checkedTodo(todo._id, todo.is_active)"></mat-checkbox>
+  <mat-checkbox ngModel="todo.is_active" (change)="checkedTodo(todo._id, todo.is_active)"></mat-checkbox>
   <div class="todo-details">
     <span>{{todo.description}}</span>
 
